@@ -66,20 +66,17 @@ export default function Contato() {
     return isValido
   }
 
-  // Manipular envio do formulário
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     if (validarFormulario()) {
       setIsSubmitting(true)
 
-      // Simular envio (em produção, aqui seria uma chamada à API)
       setTimeout(() => {
         console.log("Formulário enviado:", formData)
         setIsSubmitting(false)
         setSubmitSuccess(true)
 
-        // Resetar formulário
         setFormData({
           nome: "",
           email: "",
@@ -88,7 +85,6 @@ export default function Contato() {
           mensagem: "",
         })
 
-        // Esconder mensagem de sucesso após 5 segundos
         setTimeout(() => {
           setSubmitSuccess(false)
         }, 5000)
@@ -96,7 +92,6 @@ export default function Contato() {
     }
   }
 
-  // Manipular mudanças nos campos
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({
@@ -104,7 +99,6 @@ export default function Contato() {
       [name]: value,
     }))
 
-    // Limpar erro do campo ao digitar
     if (errors[name as keyof typeof errors]) {
       setErrors((prev) => ({
         ...prev,
@@ -119,7 +113,6 @@ export default function Contato() {
       <main className="pt-24 md:pt-32 pb-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            {/* Título */}
             <div className="mb-12 md:mb-16">
               <h1 className="text-4xl md:text-6xl font-light mb-6 text-balance">
                 Entre em <span className="font-semibold">contato</span>
@@ -130,13 +123,12 @@ export default function Contato() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {/* Informações de Contato */}
               <div>
                 <h2 className="text-2xl font-medium mb-6">Informações</h2>
                 <div className="space-y-6">
                   <div>
                     <h3 className="text-sm font-medium uppercase tracking-wider mb-2 text-muted-foreground">E-mail</h3>
-                    <p className="text-lg font-light">contato@techcareers.com</p>
+                    <p className="text-lg font-light">romuloodorico@gmail.com</p>
                   </div>
                   <div>
                     <h3 className="text-sm font-medium uppercase tracking-wider mb-2 text-muted-foreground">
@@ -169,11 +161,9 @@ export default function Contato() {
                 </div>
               </div>
 
-              {/* Formulário */}
               <div>
                 <h2 className="text-2xl font-medium mb-6">Envie uma mensagem</h2>
 
-                {/* Mensagem de Sucesso */}
                 {submitSuccess && (
                   <div className="mb-6 p-4 bg-foreground text-background" role="alert" aria-live="polite">
                     <p className="font-medium">✓ Mensagem enviada com sucesso!</p>
@@ -182,7 +172,6 @@ export default function Contato() {
                 )}
 
                 <form onSubmit={handleSubmit} noValidate>
-                  {/* Nome */}
                   <div className="mb-6">
                     <label htmlFor="nome" className="block text-sm font-medium mb-2">
                       Nome Completo *
@@ -207,7 +196,6 @@ export default function Contato() {
                     )}
                   </div>
 
-                  {/* E-mail */}
                   <div className="mb-6">
                     <label htmlFor="email" className="block text-sm font-medium mb-2">
                       E-mail *
@@ -232,7 +220,6 @@ export default function Contato() {
                     )}
                   </div>
 
-                  {/* Telefone */}
                   <div className="mb-6">
                     <label htmlFor="telefone" className="block text-sm font-medium mb-2">
                       Telefone *
@@ -258,7 +245,6 @@ export default function Contato() {
                     )}
                   </div>
 
-                  {/* Assunto */}
                   <div className="mb-6">
                     <label htmlFor="assunto" className="block text-sm font-medium mb-2">
                       Assunto *
@@ -288,7 +274,6 @@ export default function Contato() {
                     )}
                   </div>
 
-                  {/* Mensagem */}
                   <div className="mb-6">
                     <label htmlFor="mensagem" className="block text-sm font-medium mb-2">
                       Mensagem *
@@ -313,7 +298,6 @@ export default function Contato() {
                     )}
                   </div>
 
-                  {/* Botão de Envio */}
                   <button
                     type="submit"
                     disabled={isSubmitting}

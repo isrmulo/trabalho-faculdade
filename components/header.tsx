@@ -7,7 +7,6 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
 
-  // Detectar scroll para adicionar efeito no header
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
@@ -24,34 +23,36 @@ export default function Header() {
     >
       <nav className="container mx-auto px-4 py-4 md:py-6">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="text-xl md:text-2xl font-semibold tracking-tight hover:opacity-70">
-            TechCareers
+          <Link href="/" className="text-2xl md:text-3xl font-bold tracking-tight hover:opacity-70 transition-opacity" style={{ fontFamily: "var(--font-fredoka)" }}>
+            Pé Direito
           </Link>
 
-          {/* Menu Desktop */}
           <ul className="hidden md:flex items-center gap-8 text-sm font-light">
             <li>
-              <Link href="/" className="hover:text-muted-foreground">
+              <Link href="/" className="hover:text-muted-foreground transition-colors">
                 Início
               </Link>
             </li>
             <li>
-              <Link href="/vagas" className="hover:text-muted-foreground">
+              <Link href="/sobre" className="hover:text-muted-foreground transition-colors">
+                Sobre
+              </Link>
+            </li>
+            <li>
+              <Link href="/vagas" className="hover:text-muted-foreground transition-colors">
                 Vagas
               </Link>
             </li>
             <li>
-              <Link href="/contato" className="hover:text-muted-foreground">
+              <Link href="/contato" className="hover:text-muted-foreground transition-colors">
                 Contato
               </Link>
             </li>
           </ul>
 
-          {/* Botão Menu Mobile */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 hover:bg-accent rounded"
+            className="md:hidden p-2 hover:bg-accent rounded transition-colors"
             aria-label="Menu"
             aria-expanded={isMenuOpen}
           >
@@ -65,21 +66,25 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Menu Mobile */}
         {isMenuOpen && (
-          <ul className="md:hidden mt-4 space-y-4 text-sm font-light pb-4">
+          <ul className="md:hidden mt-4 space-y-4 text-sm font-light pb-4 animate-in fade-in duration-200">
             <li>
-              <Link href="/" onClick={() => setIsMenuOpen(false)} className="block hover:text-muted-foreground">
+              <Link href="/" onClick={() => setIsMenuOpen(false)} className="block hover:text-muted-foreground transition-colors">
                 Início
               </Link>
             </li>
             <li>
-              <Link href="/vagas" onClick={() => setIsMenuOpen(false)} className="block hover:text-muted-foreground">
+              <Link href="/sobre" onClick={() => setIsMenuOpen(false)} className="block hover:text-muted-foreground transition-colors">
+                Sobre
+              </Link>
+            </li>
+            <li>
+              <Link href="/vagas" onClick={() => setIsMenuOpen(false)} className="block hover:text-muted-foreground transition-colors">
                 Vagas
               </Link>
             </li>
             <li>
-              <Link href="/contato" onClick={() => setIsMenuOpen(false)} className="block hover:text-muted-foreground">
+              <Link href="/contato" onClick={() => setIsMenuOpen(false)} className="block hover:text-muted-foreground transition-colors">
                 Contato
               </Link>
             </li>
